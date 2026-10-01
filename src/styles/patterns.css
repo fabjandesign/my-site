@@ -53,6 +53,8 @@
 .image {
   background-color: var(--background-skeleton);
 
+  width: 101%;
+
   &.densities {
     width: auto;
     max-width: 100%;

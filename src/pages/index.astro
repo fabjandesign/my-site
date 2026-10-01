@@ -8,9 +8,13 @@ import lumos_background from "@/assets/graphics/lumos-background.svg";
 import Icon from "@/components/Media/Icon.astro";
 import logo_icon from "@/assets/logo/logo-icon.svg";
 import ContentWrapper from "@/components/Wrapper/ContentWrapper.astro";
+import Slider from '@/components/Interactive/Slider.astro';
+import Tabs from '@/components/Interactive/Tabs.astro';
+import Accordion from '@/components/Interactive/Accordion.astro';
+import AccordionItem from '@/components/Interactive/AccordionItem.astro';
 ---
 
-<Layout theme="dark">
+<Layout theme="dark" description="df" title="dsfdfsdf">
   <Section
     paddingBottom="even"
     containerClass="flex-grow"
@@ -36,6 +40,24 @@ import ContentWrapper from "@/components/Wrapper/ContentWrapper.astro";
         loading="eager"
         fetchPriority="high"
       />
+    </ContentWrapper>
+  </Section>
+  <Section>
+    <ContentWrapper variant="columns" column1Class="align-self-start">
+      <Heading maxWidth={12}>Pytania i odpowidzi</Heading>
+      <Slider>
+        <Tabs>
+          <Img />
+        </Tabs>
+        <Tabs />
+        <Tabs></Tabs>
+      </Slider>
+      <Accordion preview={true} slot="column2">
+        <AccordionItem open={true} headingTag="h5" heading="Pytanie 1">Odpowiedźdsa fas aasdfadf adfdas fasdfasd fasdf asdfasd ads fsda fasdf asdfa sad asdfas dsaf asdf ds as dfsa sd fdas fasdf asd fasd fas fasf asfafaasd fads asdfas asd fadsd fdasfadsasdf asdf afsdsfd afsd</AccordionItem>
+        <AccordionItem open={true} headingTag="h5" heading="Pytanie 2">Odpowiedź</AccordionItem>
+        <AccordionItem open={true} headingTag="h5" heading="Pytanie">Odpowiedź</AccordionItem>
+        <AccordionItem open={true} headingTag="h5" heading="Pytanie">Odpowiedź</AccordionItem>
+      </Accordion>
     </ContentWrapper>
   </Section>
 </Layout>
