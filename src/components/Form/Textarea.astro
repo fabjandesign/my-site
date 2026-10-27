@@ -1,29 +1,29 @@
 ---
 import type { HTMLAttributes } from "astro/types";
-import { slug } from "@/utils/text.ts";
+import { slug } from "@/utils/slug.ts";
 
 interface Props extends Omit<HTMLAttributes<"textarea">, "rows"> {
-  /** Set to `false` to skip rendering this component and its children. */
+  /** Set to `false` to omit the component. */
   render?: boolean;
-  /** The text above the field. */
+  /** Field label. */
   label?: string;
-  /** What the field starts out holding. */
+  /** Initial value. */
   value?: string;
-  /** The name it submits under. Taken from the label where it is not set. */
+  /** Submitted name. Defaults to the label slug. */
   name?: string;
-  /** The text shown in an empty field. */
+  /** Empty-field hint. */
   placeholder?: string;
-  /** How short it may be, in lines. Defaults to `3`.
+  /** Minimum visible lines. Defaults to `3`.
    *
    * @min 1
    * @int */
   minLines?: number;
-  /** How tall it grows to before it scrolls, in lines. Defaults to `12`.
+  /** Maximum visible lines. Defaults to `12`.
    *
    * @min 1
    * @int */
   maxLines?: number;
-  /** Marks the field as needed, and stars its label. */
+  /** Require the field and mark its label. */
   required?: boolean;
 }
 
@@ -74,11 +74,11 @@ const {
     .form-textarea_field {
       field-sizing: content;
       min-height: calc(
-        var(--_min-lines, 3) * 1lh + var(--field-pad-block) * 2 +
+        var(--_min-lines, 3) * 1lh + var(--_field-pad-block) * 2 +
           var(--border-width) * 2
       );
       max-height: calc(
-        var(--_max-lines, 12) * 1lh + var(--field-pad-block) * 2 +
+        var(--_max-lines, 12) * 1lh + var(--_field-pad-block) * 2 +
           var(--border-width) * 2
       );
       resize: vertical;

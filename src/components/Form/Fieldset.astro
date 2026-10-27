@@ -3,27 +3,13 @@ import type { HTMLAttributes } from "astro/types";
 import { slotContent } from "@/utils/slots.ts";
 
 interface Props extends HTMLAttributes<"fieldset"> {
-  /** Set to `false` to skip rendering this component and its children. */
+  /** Set to `false` to omit the component. */
   render?: boolean;
-  /** What the fields inside have in common, named above them. */
+  /** Field group label. */
   legend?: string;
-  /**
-   * How the fields inside are set out. Each column arrangement stacks below
-   * the width `Grid` calls medium.
-   *
-   * - `stack` — one under another (default)
-   * - `columns` — two abreast
-   * - `thirds` — three abreast
-   * - `inline` — in a row that wraps, for a run of choices
-   */
+  /** Field layout. */
   variant?: "stack" | "columns" | "thirds" | "inline";
-  /**
-   * How the legend is set.
-   *
-   * - `heading` — larger and heavier than a field's label (default)
-   * - `label` — the weight of a field's label, for a group inside a group
-   * - `hidden` — read out but not shown, where the fields say it themselves
-   */
+  /** Legend style. */
   legendStyle?: "heading" | "label" | "hidden";
 }
 

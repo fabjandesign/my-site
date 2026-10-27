@@ -1,22 +1,13 @@
 ---
 import type { HTMLAttributes, SvgComponent } from "astro/types";
 
-type IconVariant = "small" | "medium" | "large" | "full-width";
-
 interface Props extends HTMLAttributes<"svg"> {
-  /** Set to `false` to skip rendering this component and its children. */
+  /** Set to `false` to omit the component. */
   render?: boolean;
-  /** An SVG imported from `src/assets`, rendered inline. Nothing is output if it is missing. */
+  /** Imported SVG. Omit to render nothing. */
   src?: SvgComponent;
-  /**
-   * Size, in `em`, so the icon scales with the text beside it.
-   *
-   * - `small` — 1em, matching the line of text
-   * - `medium` — 1.5em (default)
-   * - `large` — 2em
-   * - `full-width` — fills its container, height follows the artwork
-   */
-  variant?: IconVariant;
+  /** Icon size. */
+  variant?: "small" | "medium" | "large" | "full-width";
 }
 
 const {
@@ -29,19 +20,15 @@ const {
 
 const labelled = Boolean(rest["aria-label"] ?? rest["aria-labelledby"]);
 
-if (import.meta.env.DEV && render) {
-  if (!Svg) {
-    console.warn(
-      "[lumos] <Icon> rendered without a `src`; nothing was output.",
-    );
-  }
+if (import.meta.env.DEV && render && !Svg) {
+  console.warn("[lumos] <Icon> rendered without a `src`; nothing was output.");
 }
 ---
 
 {
   render && Svg && (
     <Svg
-      class:list={["icon", variant !== "medium" && variant, className]}
+      class:list={["icon", variant, className]}
       aria-hidden={labelled ? undefined : "true"}
       {...rest}
     />

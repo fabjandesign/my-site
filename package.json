@@ -1,10 +1,10 @@
 {
-  "name": "my-site",
+  "name": "my-site1",
   "type": "module",
   "version": "0.0.1",
   "license": "MIT",
   "engines": {
-    "node": ">=22.12.0"
+    "node": ">=22.19.0"
   },
   "scripts": {
     "dev": "astro dev",
@@ -16,8 +16,8 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.9.10",
-    "@astrojs/sitemap": "^3.7.3",
-    "astro": "^7.2.9",
+    "@astrojs/sitemap": "^3.7.4",
+    "astro": "^7.3.8",
     "typescript": "^6.0.3"
   },
   "devDependencies": {
@@ -26,8 +26,8 @@
     "wrangler": "^4.123.0"
   },
   "lumos": {
-    "version": "0.0.3",
-    "commit": "1a8e1777ff072a3faeaebddcadb6ff80c6951c38",
-    "scaffolded": "2026-09-04"
+    "version": "1.0.0",
+    "commit": "04795f80076775ab7a9d0a6a0f59228ab7845bd0",
+    "scaffolded": "2026-10-16"
   }
 }

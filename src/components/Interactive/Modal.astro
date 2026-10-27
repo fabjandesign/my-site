@@ -4,24 +4,15 @@ import Button from "@/components/Button.astro";
 import { slotContent } from "@/utils/slots.ts";
 
 type Props = HTMLAttributes<"dialog"> & {
-  /** Set to `false` to skip rendering this component and its children. */
+  /** Set to `false` to omit the component. */
   render?: boolean;
-  /**
-   * What opens it: `[data-modal-open="<id>"]`, a link to `#<id>`, or the
-   * `?modal=<id>` query. Nothing is output without one.
-   */
+  /** Modal ID for triggers, hash links, and `?modal=`. Required. */
   id?: string;
-  /** Names the dialog for a screen reader. */
+  /** Accessible label. */
   label?: string;
-  /**
-   * How it arrives.
-   *
-   * - `small` — a centred card that rises into place (default)
-   * - `side-panel` — a full-height column sliding in from the end edge
-   * - `full-screen` — fills the viewport, the content fading up
-   */
+  /** Modal style. */
   variant?: "small" | "side-panel" | "full-screen";
-  /** Hold it open while the visual builder is in design mode. */
+  /** Keep open in design mode. */
   preview?: boolean;
 };
 

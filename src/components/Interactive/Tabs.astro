@@ -4,24 +4,13 @@ import Button from "@/components/Button.astro";
 import { slotContent } from "@/utils/slots.ts";
 
 type Props = HTMLAttributes<"div"> & {
-  /** Set to `false` to skip rendering this component and its children. */
+  /** Set to `false` to omit the component. */
   render?: boolean;
-  /**
-   * Where the tabs sit against their panels.
-   *
-   * - `horizontal` — in a row above them (default)
-   * - `side` — in a column beside them
-   */
+  /** Tab layout. */
   variant?: "horizontal" | "side";
-  /**
-   * How the panels advance, and everything that follows from it.
-   *
-   * - `manual` — the reader advances them, and panels cross-fade (default)
-   * - `auto` — they advance on their own and slide, with arrows, a
-   *   play control and a progress line
-   */
+  /** Panel playback. */
   playback?: "manual" | "auto";
-  /** Lays every panel out at once while the visual builder is in design mode, so each one can be edited. Nothing changes on the published page. */
+  /** Show all panels in design mode. */
   preview?: boolean;
 };
 

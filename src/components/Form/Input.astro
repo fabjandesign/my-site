@@ -1,6 +1,6 @@
 ---
 import type { HTMLAttributes } from "astro/types";
-import { slug } from "@/utils/text.ts";
+import { slug } from "@/utils/slug.ts";
 
 type InputVariant =
   | "text"
@@ -16,30 +16,21 @@ type InputVariant =
   | "url";
 
 interface Props extends Omit<HTMLAttributes<"input">, "type"> {
-  /** Set to `false` to skip rendering this component and its children. */
+  /** Set to `false` to omit the component. */
   render?: boolean;
-  /** The text above the field. Defaults to the wording of the variant. */
+  /** Field label. Defaults to the variant name. */
   label?: string;
-  /** What the field starts out holding. */
+  /** Initial value. */
   value?: string;
-  /**
-   * What the field is for. It settles the input's type, keyboard, autofill
-   * and wording together, so a field only has to say which one it is.
-   *
-   * - `text` — anything else, with no assumptions (default)
-   * - `first-name`, `last-name`, `zip-code` — autofilled from an address
-   * - `email`, `phone`, `url`, `number`, `date` — a keyboard and validation
-   *   to match
-   * - `search`, `password` — the browser's own handling of each
-   */
+  /** Input type and autofill preset. */
   variant?: InputVariant;
-  /** The name it submits under. Taken from the label where it is not set. */
+  /** Submitted name. Defaults to the label slug. */
   name?: string;
-  /** The text shown in an empty field. Defaults to the wording of the variant. */
+  /** Empty-field hint. Defaults to the variant name. */
   placeholder?: string;
-  /** Marks the field as needed, and stars its label. */
+  /** Require the field and mark its label. */
   required?: boolean;
-  /** Keeps the label for a screen reader, and takes it off the page. */
+  /** Visually hide the label. */
   labelHidden?: boolean;
 }
 

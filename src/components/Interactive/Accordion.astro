@@ -1,16 +1,16 @@
 ---
 import type { HTMLAttributes } from "astro/types";
 import { slotContent } from "@/utils/slots.ts";
-import { uid } from "@/utils/uid.ts";
+import { uid } from "@/utils/unique-id.ts";
 
 type Props = HTMLAttributes<"div"> & {
-  /** Set to `false` to skip rendering this component and its children. */
+  /** Set to `false` to omit the component. */
   render?: boolean;
-  /** Only one item stays open at a time. Set `false` to open them independently. */
+  /** Keep only one item open. */
   single?: boolean;
-  /** Opens the first item on load. Every item starts closed otherwise. */
+  /** Open the first item on load. */
   openFirst?: boolean;
-  /** Holds every item open while the visual builder is in design mode, so the content can be edited. Nothing changes on the published page. */
+  /** Keep all items open in design mode. */
   preview?: boolean;
 };
 

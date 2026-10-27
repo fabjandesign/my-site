@@ -4,11 +4,11 @@ import Button from "@/components/Button.astro";
 import { slotContent } from "@/utils/slots.ts";
 
 type Props = HTMLAttributes<"div"> & {
-  /** Set to `false` to skip rendering this component and its children. */
+  /** Set to `false` to omit the component. */
   render?: boolean;
-  /** What the strip holds, for anyone who cannot see it. Defaults to `Marquee`. */
+  /** Accessible label. Defaults to `Marquee`. */
   label?: string;
-  /** Which way the items travel. Defaults to `forwards`, which runs them leftwards. */
+  /** Travel direction. */
   direction?: "forwards" | "backwards";
 };
 

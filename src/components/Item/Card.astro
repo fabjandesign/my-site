@@ -1,46 +1,34 @@
 ---
 import type { HTMLAttributes } from "astro/types";
-import Eyebrow from "@/components/Typography/Eyebrow.astro";
-import Heading from "@/components/Typography/Heading.astro";
-import Paragraph from "@/components/Typography/Paragraph.astro";
+import Eyebrow from "@/components/typography/Eyebrow.astro";
+import Heading from "@/components/typography/Heading.astro";
+import Paragraph from "@/components/typography/Paragraph.astro";
 import Button from "@/components/Button.astro";
-import ButtonWrapper from "@/components/Wrapper/ButtonWrapper.astro";
-import Img from "@/components/Media/Img.astro";
-import Overlay from "@/components/Media/Overlay.astro";
+import ButtonWrapper from "@/components/wrapper/ButtonWrapper.astro";
+import Img from "@/components/media/Img.astro";
+import Overlay from "@/components/media/Overlay.astro";
 
-type CardVariant = "default" | "cover" | "stacked";
-type CardTheme = "inherit" | "light" | "dark" | "brand" | "invert";
-type HeadingTag = "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
 type ImageSource = ImageMetadata | string;
 
 type Base = HTMLAttributes<"div"> & {
-  /** Set to `false` to skip rendering this component and its children. */
+  /** Set to `false` to omit the component. */
   render?: boolean;
-  /** Small line of text above the heading. Inline markup is rendered. */
+  /** Eyebrow text. Supports inline markup. */
   eyebrow?: string;
-  /** The card's title. Inline markup is rendered. */
+  /** Card title. Supports inline markup. */
   heading?: string;
-  /** Heading level, for the page outline. Every card heading is the same size. */
-  headingTag?: HeadingTag;
-  /**
-   * Body copy under the heading. Inline markup is rendered, so it can carry a
-   * link — one inside a clickable card stays clickable on its own.
-   */
+  /** Heading level. */
+  headingTag?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+  /** Body text. Supports inline markup. */
   text?: string;
-  /** Label of the closing button. Nothing renders without one. */
+  /** Button label. Omit to hide the button. */
   buttonLabel?: string;
-  /** Where the button leads. Left out, it renders as a plain button. */
+  /** Button destination. Omit for a `<button>`. */
   buttonHref?: string;
-  /**
-   * Where the image sits.
-   *
-   * - `default` — no image, text only (default)
-   * - `cover` — image fills the card, text over it
-   * - `stacked` — image above the text, bleeding to the edges
-   */
-  variant?: CardVariant;
-  /** Colors the card carries with it, whatever section it sits in. */
-  theme?: CardTheme;
+  /** Card layout. */
+  variant?: "default" | "cover" | "stacked";
+  /** Color theme of element and its children. */
+  theme?: "inherit" | "light" | "dark" | "brand" | "invert";
 };
 
 type Props = Base &
@@ -52,18 +40,18 @@ type Props = Base &
       }
     | {
         variant: "cover";
-        /** An imported asset, a remote `http(s)` URL, or a path to a file in `public/`. */
+        /** Image source. */
         image?: ImageSource;
-        /** Leave unset on decorative images — renders `alt=""`. */
+        /** Image alt text. Omit for decorative images. */
         imageAlt?: string;
       }
     | {
         variant: "stacked";
-        /** A stacked card has no surface of its own, so it keeps the theme around it. */
+        /** Color theme of element and its children. */
         theme?: never;
-        /** An imported asset, a remote `http(s)` URL, or a path to a file in `public/`. */
+        /** Image source. */
         image?: ImageSource;
-        /** Leave unset on decorative images — renders `alt=""`. */
+        /** Image alt text. Omit for decorative images. */
         imageAlt?: string;
       }
   );

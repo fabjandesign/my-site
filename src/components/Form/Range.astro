@@ -1,36 +1,36 @@
 ---
 import type { HTMLAttributes } from "astro/types";
-import { slug } from "@/utils/text.ts";
+import { slug } from "@/utils/slug.ts";
 
 interface Props extends Omit<HTMLAttributes<"input">, "type" | "value"> {
-  /** Set to `false` to skip rendering this component and its children. */
+  /** Set to `false` to omit the component. */
   render?: boolean;
-  /** The text above the track. */
+  /** Field label. */
   label?: string;
-  /** Where the handle starts. Defaults to halfway.
+  /** Initial value. Defaults to the midpoint.
    *
    * @min 0
    * @max 100
    * @int */
   value?: number;
-  /** The lowest it goes. Defaults to `0`.
+  /** Minimum value. Defaults to `0`.
    *
    * @int */
   min?: number;
-  /** The highest it goes. Defaults to `100`.
+  /** Maximum value. Defaults to `100`.
    *
    * @int */
   max?: number;
-  /** How far it moves at a time. Defaults to `1`.
+  /** Value interval. Defaults to `1`.
    *
    * @min 1
    * @int */
   step?: number;
-  /** What the number is measured in, shown after it. */
+  /** Unit shown after the value. */
   unit?: string;
-  /** The name it submits under. Taken from the label where it is not set. */
+  /** Submitted name. Defaults to the label slug. */
   name?: string;
-  /** Marks the field as needed, and stars its label. */
+  /** Require the field and mark its label. */
   required?: boolean;
 }
 

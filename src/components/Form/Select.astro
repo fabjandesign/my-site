@@ -1,25 +1,25 @@
 ---
 import type { HTMLAttributes } from "astro/types";
-import { slug } from "@/utils/text.ts";
-import Icon from "@/components/Media/Icon.astro";
+import { slug } from "@/utils/slug.ts";
+import Icon from "@/components/media/Icon.astro";
 import arrow from "@/assets/icons/arrow.svg";
 
 type SelectOption = string | { value: string; label: string };
 
 type Base = {
-  /** Set to `false` to skip rendering this component and its children. */
+  /** Set to `false` to omit the component. */
   render?: boolean;
-  /** The text above the field. Defaults to the wording of the variant. */
+  /** Field label. Defaults to the variant name. */
   label?: string;
-  /** Which option starts out chosen. */
+  /** Initially selected value. */
   value?: string;
-  /** The name it submits under. Taken from the label where it is not set. */
+  /** Submitted name. Defaults to the label slug. */
   name?: string;
-  /** The text shown before a choice is made. Defaults to the wording of the variant. */
+  /** Prompt shown before selection. Defaults to the variant prompt. */
   placeholder?: string;
-  /** Marks the field as needed, and stars its label. */
+  /** Require the field and mark its label. */
   required?: boolean;
-  /** Keeps the label for a screen reader, and takes it off the page. */
+  /** Visually hide the label. */
   labelHidden?: boolean;
 };
 
@@ -27,15 +27,9 @@ type Props = HTMLAttributes<"select"> &
   Base &
   (
     | {
-        /**
-         * What the field offers.
-         *
-         * - `list` — options you supply (default)
-         * - `month`, `day`, `state` — a built-in list
-         * - `year` — a range, set with `from` and `to`
-         */
+        /** Option source. */
         variant?: "list";
-        /** What there is to choose from. A plain string is its own label. */
+        /** Options to show. Strings double as labels. */
         options: SelectOption[];
         from?: never;
         to?: never;
@@ -49,11 +43,11 @@ type Props = HTMLAttributes<"select"> &
     | {
         variant: "year";
         options?: never;
-        /** The earliest year offered. Defaults to a hundred before `to`.
+        /** First year. Defaults to 100 years before `to`.
          *
          * @int */
         from?: number;
-        /** The latest year offered. Defaults to the year this was built.
+        /** Last year. Defaults to the build year.
          *
          * @int */
         to?: number;

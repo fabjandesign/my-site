@@ -3,15 +3,15 @@ import type { HTMLAttributes } from "astro/types";
 import { slotContent } from "@/utils/slots.ts";
 
 interface Props extends HTMLAttributes<"form"> {
-  /** Set to `false` to skip rendering this component and its children. */
+  /** Set to `false` to omit the component. */
   render?: boolean;
-  /** What the form is called, which is what it submits under. */
+  /** Form name. */
   name?: string;
-  /** Where it posts. Left unset, it sends nothing and reports success. */
+  /** Form endpoint. Omit to skip submission. */
   action?: string;
-  /** Shown in place of the fields once it has sent. */
+  /** Message shown after submission. */
   successMessage?: string;
-  /** Shown beneath the fields when it could not send. */
+  /** Message shown after an error. */
   errorMessage?: string;
 }
 

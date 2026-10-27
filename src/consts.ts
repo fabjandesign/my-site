@@ -7,11 +7,5 @@ export const SITE_DESCRIPTION =
 export const SITE_URL = "https://preview.lumosframework.com";
 /** BCP 47 locale tag used to format dates and numbers. */
 export const SITE_LOCALE = "en-US";
-/**
- * Routes kept out of search results. Each is excluded from the sitemap and
- * served with a `robots: noindex, nofollow` tag, so the two can't disagree.
- *
- * Surrounding slashes are optional: `"/thanks"`, `"thanks"` and `"/thanks/"`
- * all match the same route.
- */
+/** Routes excluded from search and the sitemap. Surrounding slashes are ignored. */
 export const NOINDEX_ROUTES: string[] = ["/404"];

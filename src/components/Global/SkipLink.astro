@@ -2,11 +2,11 @@
 import Button from "@/components/Button.astro";
 
 interface Props {
-  /** Set to `false` to skip rendering this component and its children. */
+  /** Set to `false` to omit the component. */
   render?: boolean;
-  /** Id of the element it jumps to, written without the `#`. */
+  /** Target ID, without `#`. */
   target?: string;
-  /** What it says once it is on screen. */
+  /** Link text. */
   label?: string;
 }
 

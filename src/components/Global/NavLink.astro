@@ -3,9 +3,9 @@ import type { HTMLAttributes } from "astro/types";
 import { slotContent } from "@/utils/slots.ts";
 
 type Props = HTMLAttributes<"a"> & {
-  /** Set to `false` to skip rendering this component and its children. */
+  /** Set to `false` to omit the component. */
   render?: boolean;
-  /** Where the link goes. Compared against the current URL to mark it. */
+  /** Link destination. The current URL is marked automatically. */
   href: string;
 };
 

@@ -1,4 +1,4 @@
-/** A string as it would be written in a url or a form field's name. */
+/** Creates field-name slugs. Used by Choice, Input, Range, Select, and Textarea. */
 export function slug(text: string): string {
   return text
     .trim()

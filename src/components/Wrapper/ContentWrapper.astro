@@ -13,28 +13,16 @@ type ContentWrapperVariant =
   | "card";
 
 type Base = HTMLAttributes<"div"> & {
-  /** Set to `false` to skip rendering this component and its children. */
+  /** Set to `false` to omit the component. */
   render?: boolean;
-  /**
-   * How the two columns are arranged. The default slot is the first column,
-   * the `column2` slot the second.
-   *
-   * - `stack` — one column, everything in order (default)
-   * - `auto-width` — a row, each column only as wide as its content
-   * - `columns` — two even columns from 64rem up
-   * - `breakout` — full viewport width, the visual bleeding off one edge
-   * - `contain` — two columns on a filled, rounded surface
-   * - `sticky-content` — two columns; the content holds as the visual scrolls
-   * - `sticky-visual` — two columns; the visual holds as the content scrolls
-   * - `card` — the visual fills the surface, the content centered over it
-   */
+  /** Content layout. */
   variant?: ContentWrapperVariant;
 };
 
 type ColumnClasses = {
-  /** Classes for the first column, which holds the default slot. */
+  /** First-column classes. */
   column1Class?: string;
-  /** Classes for the second column. */
+  /** Second-column classes. */
   column2Class?: string;
 };
 
@@ -43,7 +31,7 @@ type Props = Base &
     | {
         variant?: "stack";
         reverse?: never;
-        /** Center the contents of each column. */
+        /** Center each column's content. */
         centered?: boolean;
         mediaOpacity?: never;
       }
@@ -71,7 +59,7 @@ type Props = Base &
         reverse?: never;
         centered?: never;
         /**
-         * How visible the card's visual is, as a percentage. Defaults to 70.
+         * Card visual opacity. Defaults to `70`.
          *
          * @min 0
          * @max 100

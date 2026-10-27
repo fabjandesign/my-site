@@ -2,17 +2,12 @@
 import type { HTMLAttributes } from "astro/types";
 
 interface Props extends HTMLAttributes<"div"> {
-  /** Set to `false` to skip rendering this component and its children. */
+  /** Set to `false` to omit the component. */
   render?: boolean;
-  /**
-   * How the tint is distributed.
-   *
-   * - `solid` — even across the whole area (default)
-   * - `gradient` — clear at the top, darkening towards the bottom
-   */
+  /** Overlay style. */
   variant?: "solid" | "gradient";
   /**
-   * How dark the tint is, as a percentage of the variant's full strength.
+   * Tint strength as a percentage.
    *
    * @min 0
    * @max 100

@@ -20,31 +20,23 @@ type ContainerGap =
   | "large";
 
 interface Props extends HTMLAttributes<"section"> {
-  /** Set to `false` to skip rendering this component and its children. */
+  /** Set to `false` to omit the component. */
   render?: boolean;
-  /** Colors this section and everything inside it. */
+  /** Color theme of element and its children. */
   theme?: "inherit" | "light" | "dark" | "brand";
-  /**
-   * Space above the content.
-   *
-   * - `medium` — the usual gap between sections (default)
-   * - `none` — flush, for a section that meets the one above it
-   * - `even` — the site margin, matching the space at the sides
-   * - `small`, `large` — tighter or looser than usual
-   * - `navoverlap` — clears a nav sitting over the page
-   */
+  /** Top padding. */
   paddingTop?: SectionSpace;
-  /** Space below the content. Takes the same values as `paddingTop`. */
+  /** Bottom padding. */
   paddingBottom?: SectionSpace;
-  /** Space between the children, from the spacing scale. Defaults to `8`. */
+  /** Child gap. */
   gap?: ContainerGap;
-  /** Where the content sits across the section. Defaults to `start`. */
+  /** Content alignment. */
   align?: "start" | "center" | "end";
-  /** Fills the screen's height, however little content there is. */
+  /** Fill the viewport height. */
   fullHeight?: boolean;
-  /** Classes for the container inside the section, which sets the width. */
+  /** Inner container classes. */
   containerClass?: string;
-  /** Attributes for that same container. */
+  /** Inner container attributes. */
   containerAttrs?: HTMLAttributes<"div">;
 }
 

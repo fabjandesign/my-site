@@ -7,45 +7,35 @@ type Head = Omit<
   HTMLAttributes<"video">,
   "src" | "poster" | "loop" | "autoplay" | "muted"
 > & {
-  /** Set to `false` to skip rendering this component and its children. */
+  /** Set to `false` to omit the component. */
   render?: boolean;
-  /** Video file URL. Nothing is output if it is missing. */
+  /** Video URL. Omit to render nothing. */
   src?: string;
-  /** Still frame shown before playback starts. */
+  /** Poster image URL. */
   poster?: string;
 };
 
 type Tail = {
-  /** Restart from the beginning on reaching the end. */
+  /** Restart after playback. */
   loop?: boolean;
-  /** Begin playing without interaction. Browsers only permit this while muted. */
+  /** Start automatically. Requires `muted`. */
   autoplay?: boolean;
-  /** Play without sound. Required for autoplay to be allowed. */
+  /** Mute audio. */
   muted?: boolean;
-  /** For cutouts: fit the whole frame in rather than cropping, and drop the skeleton tint. */
+  /** Fit without cropping and remove the skeleton tint. */
   transparent?: boolean;
 };
 
 type Props = Head &
   (
     | {
-        /**
-         * Aspect ratio, applied with the matching `ratio-*` utility.
-         *
-         * - `2-1`, `16-9` — widescreen (`16-9` is the default)
-         * - `3-2`, `5-4`, `1-1` — squarer
-         * - `4-5`, `2-3` — upright, for a phone
-         *
-         * `custom` takes a ratio of your own. `auto` matches the file, but its
-         * height is unknown until the file's metadata arrives, so the page
-         * shifts once it loads.
-         */
+        /** Aspect ratio. */
         variant?: VideoRatio;
         ratio?: never;
       }
     | {
         variant: "custom";
-        /** Any CSS `aspect-ratio` value, such as `21 / 9` or `1.85`. */
+        /** CSS `aspect-ratio` value. */
         ratio?: string;
       }
     | {
@@ -57,16 +47,7 @@ type Props = Head &
 
 type AllProps = Head &
   Tail & {
-    variant?:
-      | "2-1"
-      | "16-9"
-      | "3-2"
-      | "5-4"
-      | "1-1"
-      | "4-5"
-      | "2-3"
-      | "custom"
-      | "auto";
+    variant?: VideoRatio | "custom" | "auto";
     ratio?: string;
   };
 

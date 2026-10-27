@@ -1,15 +1,15 @@
 ---
 import type { HTMLAttributes } from "astro/types";
-import Icon from "@/components/Media/Icon.astro";
+import Icon from "@/components/media/Icon.astro";
 import arrow from "@/assets/icons/arrow.svg";
 import { slotContent } from "@/utils/slots.ts";
 
 type Props = HTMLAttributes<"div"> & {
-  /** Set to `false` to skip rendering this component and its children. */
+  /** Set to `false` to omit the component. */
   render?: boolean;
-  /** The text on the control that opens it. */
+  /** Trigger text. */
   label?: string;
-  /** Holds the panel open while the visual builder is in design mode, so the content can be edited. Nothing changes on the published page. */
+  /** Keep the panel open in design mode. */
   preview?: boolean;
 };
 

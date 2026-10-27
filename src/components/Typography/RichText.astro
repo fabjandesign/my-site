@@ -16,19 +16,12 @@ type RichTextStyle =
   | "small";
 
 interface Props extends HTMLAttributes<"div"> {
-  /** Set to `false` to skip rendering this component and its children. */
+  /** Set to `false` to omit the component. */
   render?: boolean;
-  /**
-   * Type style the whole block is spaced and sized from.
-   *
-   * - `display`, `h1`–`h6` — the heading sizes
-   * - `large`, `main`, `small` — the body sizes
-   * - `inherit` — take the style from its surroundings (default)
-   */
+  /** Type style. */
   variant?: RichTextStyle;
   /**
-   * Longest line, in characters, before the text wraps. Unset, it fills
-   * its column.
+   * Maximum line length in characters.
    *
    * @min 1
    * @int

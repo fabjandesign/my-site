@@ -4,41 +4,31 @@ import Button from "@/components/Button.astro";
 import { slotContent } from "@/utils/slots.ts";
 
 type Props = HTMLAttributes<"div"> & {
-  /** Set to `false` to skip rendering this component and its children. */
+  /** Set to `false` to omit the component. */
   render?: boolean;
-  /** What the slides hold, for anyone who cannot see them. Defaults to `Slider`. */
+  /** Accessible label. Defaults to `Slider`. */
   label?: string;
-  /**
-   * How far the slides run past the container.
-   *
-   * - `bleed` — off both edges of the screen (default)
-   * - `crop-start` — flush at the start, off the end
-   * - `contained` — within the container on both sides
-   */
+  /** Slider bounds. */
   variant?: "bleed" | "crop-start" | "contained";
-  /** Slides in view below 30rem, the base every larger size falls back to. Must be greater than 0. Defaults to 1.02.
+  /** Slides shown below 30rem. Defaults to `1.02`.
    *
    * @min 1
-   * @max 12
-   * @int */
+   * @max 12 */
   xsmall?: number;
-  /** Slides in view from 30rem up. Must be greater than 0. Inherits xsmall when unset.
+  /** Slides shown from 30rem. Inherits `xsmall`.
    *
    * @min 1
-   * @max 12
-   * @int */
+   * @max 12 */
   small?: number;
-  /** Slides in view from 48rem up. Must be greater than 0. Inherits small when unset.
+  /** Slides shown from 48rem. Inherits `small`.
    *
    * @min 1
-   * @max 12
-   * @int */
+   * @max 12 */
   medium?: number;
-  /** Slides in view from 64rem up. Must be greater than 0. Inherits medium when unset.
+  /** Slides shown from 64rem. Inherits `medium`.
    *
    * @min 1
-   * @max 12
-   * @int */
+   * @max 12 */
   large?: number;
 };
 

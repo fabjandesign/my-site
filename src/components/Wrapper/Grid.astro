@@ -3,23 +3,17 @@ import type { HTMLAttributes } from "astro/types";
 import { slotContent } from "@/utils/slots.ts";
 
 type Base = HTMLAttributes<"div"> & {
-  /** Set to `false` to skip rendering this component and its children. */
+  /** Set to `false` to omit the component. */
   render?: boolean;
 };
 
 type Props = Base &
   (
     | {
-        /**
-         * How the columns are decided.
-         *
-         * - `columns` — a count you set per breakpoint (default)
-         * - `autofit` — as many columns as fit, from a minimum width
-         * - `autofill` — same, but empty columns keep their space
-         */
+        /** Grid mode. */
         variant?: "columns";
         /**
-         * Columns below 30rem. The base every larger size falls back to.
+         * Columns below 30rem. Defaults to `1`.
          *
          * @min 1
          * @max 12
@@ -27,7 +21,7 @@ type Props = Base &
          */
         xsmall?: number;
         /**
-         * Columns from 30rem up. Inherits xsmall when unset.
+         * Columns from 30rem. Inherits `xsmall`.
          *
          * @min 1
          * @max 12
@@ -35,7 +29,7 @@ type Props = Base &
          */
         small?: number;
         /**
-         * Columns from 48rem up. Inherits small when unset.
+         * Columns from 48rem. Inherits `small`.
          *
          * @min 1
          * @max 12
@@ -43,7 +37,7 @@ type Props = Base &
          */
         medium?: number;
         /**
-         * Columns from 64rem up. Inherits medium when unset.
+         * Columns from 64rem. Inherits `medium`.
          *
          * @min 1
          * @max 12
@@ -56,14 +50,14 @@ type Props = Base &
     | {
         variant: "autofit" | "autofill";
         /**
-         * Never exceed this many columns, however wide the grid gets. Defaults to 12.
+         * Maximum columns. Defaults to `12`.
          *
          * @min 1
          * @max 12
          * @int
          */
         maxColumnCount?: number;
-        /** Smallest a column may get, in rem, before the count drops. Must be greater than 0. Defaults to 12.
+        /** Minimum column width in rem. Defaults to `12`.
          *
          * @min 1 */
         minColumnWidth?: number;

@@ -1,44 +1,38 @@
 ---
 import type { HTMLAttributes } from "astro/types";
-import Icon from "@/components/Media/Icon.astro";
+import Icon from "@/components/media/Icon.astro";
 import check from "@/assets/icons/check.svg";
-import { slug } from "@/utils/text.ts";
+import { slug } from "@/utils/slug.ts";
 
 type Base = {
-  /** Set to `false` to skip rendering this component and its children. */
+  /** Set to `false` to omit the component. */
   render?: boolean;
-  /** The text beside the control, and what it is called. */
+  /** Control label. */
   label?: string;
-  /** What it submits when it is chosen. Defaults to `on`. */
+  /** Submitted value. Defaults to `on`. */
   value?: string;
 };
 
 type Kind =
   | {
-      /** Whether it stands on its own or belongs to a group. Defaults to `checkbox`. */
+      /** Input type. */
       type?: "checkbox";
-      /** The name it submits under. Taken from the label where it is not set. */
+      /** Submitted name. Defaults to the label slug. */
       name?: string;
     }
   | {
-      /** Whether it stands on its own or belongs to a group. Defaults to `checkbox`. */
+      /** Input type. */
       type: "radio";
-      /** The name every choice in the group shares, which is what groups them. */
+      /** Shared name for the radio group. */
       name: string;
     };
 
 type Settings = {
-  /**
-   * How the control is drawn.
-   *
-   * - `default` — a box or a circle beside the text
-   * - `toggle` — a switch that slides
-   * - `chip` — the whole of it reads as one control, and fills when chosen
-   */
+  /** Control style. */
   variant?: "default" | "toggle" | "chip";
-  /** Whether it starts out chosen. */
+  /** Start selected. */
   checked?: boolean;
-  /** Marks the choice as needed. */
+  /** Require a selection. */
   required?: boolean;
 };
 
